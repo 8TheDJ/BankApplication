@@ -17,6 +17,11 @@ class Bankaccount:
             print(f"You have succesfully deposited{amount}.\n Your balance is now:{self.balance}")
     def check_balance(self):
          print(f"Your balance is {self.balance}")
+    def to_dict(self):
+        return {"Balance": self.balance}
+    @classmethod
+    def from_dict(cls, data):
+        return cls(balance=data['balance'])
 
 def signup():
     file_path = 'data.json'
@@ -68,7 +73,7 @@ def signup():
     # Add the new username to the data
     data[username] = {"username": username,
                       "password": password,
-                      "account": account}  # Add more info here as needed
+                      "account": account.to_dict()}  # Add more info here as needed
 
     # Write the updated data back to the file
     with open(file_path, 'w') as f:
@@ -77,5 +82,21 @@ def signup():
     print(f"Username '{username}', password and bankaccount have been successfully added.")
 
 def signin():
-    pass
+
+    # Load existing users from the file
+    if not os.path.exists('data.json'):
+        print("No users found. Please sign up first.")
+        return
+
+    with open('data.json', 'r') as f:
+        users = json.load(f)
+    
+    while True:
+        inputusername= str(input("Please enter your username")).lower().strip()
+        inputpassword=str(input(f"Please enter the password for the account {inputusername}."))
+        if inputusername in users and inputpassword == users[username]['password']:
+            pass
+
+
+    
 #proberen signin() en de functie waarin je ingelogd je bankaccount kan aanpassen apart maken.

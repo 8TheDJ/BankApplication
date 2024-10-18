@@ -1,5 +1,9 @@
 {
-    "dj": {
-        "username": "dj",
+    "diederik": {
+        "username": "diederik",
         "password": "Fozzy",
-        "account": 
+        "account": {
+            "Balance": 100.0
+        }
+    }
+}
