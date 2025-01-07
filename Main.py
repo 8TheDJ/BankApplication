@@ -1,34 +1,24 @@
-import time
-import os
-import json
-from GroupFunctions1 import *
-# user gegevens in een Json stoppen, account aanmaken en registratie voor de bank, uiteindelijke scenario in een GUI zetten
+from signup import signup
+from signin import signin
+from utils import load_data, save_data
 
-filepath=os.path.join(os.path.dirname(__file__),'data.json')
-if not os.path.exists(filepath):
-    with open(filepath, 'w') as f:
-        f.write('{}')
+def main():
+    file_path = "data.json"
+    users = load_data(file_path)
 
-while True:
-    choice1 = input("Do you have a current account at Elias Bank? Please respond with 'yes' or 'no'. ").lower()
-    if choice1 == "yes":
-        print("Enter your username and password to enter your account.")
-        signin()
-        break  
-    elif choice1 == 'no':
-        while True:
-            choice2 = input("Do you want to make an account? Please respond with 'yes' or 'no'. ").lower()
-            if choice2 == "yes":
-                signup()
-                break
-            elif choice2 == "no":
-                print("Thank you for your time. Goodbye!")
-                break 
-            else:
-                print("Invalid input. Please respond with 'yes' or 'no'.")
+    while True:
+        choice = input("Do you have an account at Elias Bank? (yes/no): ").strip().lower()
+        if choice == "yes":
+            signin(users)
+        elif choice == "no":
+            signup(users)
+        else:
+            print("Invalid choice. Please respond with 'yes' or 'no'.")
+            continue
+
+        save_data(users, file_path)
         break
-    else:
-        print("Invalid input. Please respond with 'yes' or 'no'.") 
 
 
-
+if __name__ == "__main__":
+    main()
