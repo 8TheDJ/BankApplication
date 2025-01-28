@@ -1,3 +1,5 @@
+from signup_module import signup_function
+from signin_module import signin_function
 from utils import load_data, save_data
 import tkinter as tk
 import customtkinter as ctk
@@ -29,10 +31,15 @@ def show_home_page():
 
     nobutton = ctk.CTkButton(button_frame, text="No", command=show_signup_page)
     nobutton.pack(side="left", padx=20)
+def loginfuncwrapper(login_username, login_password):
+        if signin_function(login_username, login_password):
+            customer_page()
+        else:
+            print("Login failed. Please try again.")
+
+
 
 def show_login_page():
-    global login_username_entry, login_password_entry
-
     for widget in Mainwindow.winfo_children():
         widget.destroy()
 
@@ -51,7 +58,9 @@ def show_login_page():
     password_label.pack(pady=5)
     login_password_entry = ctk.CTkEntry(frame, show="*")
     login_password_entry.pack(pady=5)
-    login_button = ctk.CTkButton(frame, text="Login", command=lambda: signin_function(users))
+    login_username=login_username_entry.get()
+    login_password=login_password_entry.get()
+    login_button = ctk.CTkButton(frame, text="Login", command=lambda: loginfuncwrapper(login_username, login_password))
     login_button.pack(pady=20)
     back_button = ctk.CTkButton(frame, text="Back", command=show_home_page)
     back_button.pack(pady=20)
