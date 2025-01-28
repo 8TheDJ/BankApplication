@@ -1,6 +1,6 @@
 from user_module import User
 from utils import load_data, save_data
-from TKmain import username_entry, password_entry, customer_page
+
 
 def signin(users):
     while True:
@@ -18,15 +18,16 @@ def signin(users):
         else:
             print("Incorrect password. Please try again.")
 
-def signin_function():
-    passwordentered = password_entry.get()
-    usernameentered = username_entry.get()
+def signin_function(login_username, login_password):
+    users = load_data()
+    if login_username not in users:
+        print("User not found. Please try again or sign up first.")
+        return
 
-    # Add logic to handle the entered username and password
-    # For example, you can call the signin function with the entered credentials
-    users = load_data()  # Assuming load_data loads the users' data
-    if usernameentered in users and users[usernameentered]['password'] == passwordentered:
-        customer_page()
-        print(f"Welcome back, {usernameentered}!")
+    stored_password = users[username]['password']
+    if password == stored_password:  # Replace with hashing in a secure system
+        print(f"Welcome back, {username}!")
+        # Add further operations (e.g., deposit, withdrawal) here.
+        break
     else:
-        print("Incorrect username or password. Please try again.")
+        print("Incorrect password. Please try again.")

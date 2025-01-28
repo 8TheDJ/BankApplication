@@ -1,5 +1,3 @@
-from signup_module import signup
-from signin_module import signin_function
 from utils import load_data, save_data
 import tkinter as tk
 import customtkinter as ctk
@@ -33,7 +31,7 @@ def show_home_page():
     nobutton.pack(side="left", padx=20)
 
 def show_login_page():
-    global username_entry, password_entry
+    global login_username_entry, login_password_entry
 
     for widget in Mainwindow.winfo_children():
         widget.destroy()
@@ -46,13 +44,13 @@ def show_login_page():
 
     username_label = ctk.CTkLabel(frame, text="Username")
     username_label.pack(pady=5)
-    username_entry = ctk.CTkEntry(frame)
-    username_entry.pack(pady=5)
+    login_username_entry = ctk.CTkEntry(frame)
+    login_username_entry.pack(pady=5)
 
     password_label = ctk.CTkLabel(frame, text="Password")
     password_label.pack(pady=5)
-    password_entry = ctk.CTkEntry(frame, show="*")
-    password_entry.pack(pady=5)
+    login_password_entry = ctk.CTkEntry(frame, show="*")
+    login_password_entry.pack(pady=5)
     login_button = ctk.CTkButton(frame, text="Login", command=lambda: signin_function(users))
     login_button.pack(pady=20)
     back_button = ctk.CTkButton(frame, text="Back", command=show_home_page)

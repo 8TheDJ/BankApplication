@@ -1,5 +1,9 @@
 from user_module import User, BankAccount
 
+def signup_function():
+    pass
+
+
 def signup(users):
     while True:
         username = input("Enter your username: ").strip().lower()
