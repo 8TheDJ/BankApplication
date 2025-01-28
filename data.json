@@ -5,5 +5,33 @@
         "account": {
             "Balance": 100.0
         }
+    },
+    "john_doe": {
+        "username": "john_doe",
+        "password": "12345",
+        "account": {
+            "balance": 100.0
+        }
+    },
+    "jane_doe": {
+        "username": "jane_doe",
+        "password": "password123",
+        "account": {
+            "balance": 200.0
+        }
+    },
+    "joshua": {
+        "username": "joshua",
+        "password": "VriendinJoshua",
+        "account": {
+            "balance": 100.0
+        }
+    },
+    "bans": {
+        "username": "bans",
+        "password": "Wans",
+        "account": {
+            "balance": 3000.0
+        }
     }
 }

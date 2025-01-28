@@ -1,7 +1,6 @@
 import time
 import os
 import json
-from GroupFunctions1 import *
 # user gegevens in een Json stoppen, account aanmaken en registratie voor de bank, uiteindelijke scenario in een GUI zetten
 
 class Bankaccount:
